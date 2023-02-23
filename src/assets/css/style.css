@@ -1,3 +1,6 @@
+body{
+    height: 839px;
+}
 .imagem-forca {
     width: 400px;
     height: 466.67px;
@@ -16,6 +19,7 @@
     height: 60px;
     background-color: #27AE60;
     border-radius: 8px;
+    border: none;
     font-size: 20px;
     line-height: 23px;
     color: #FFFFFF;
@@ -57,6 +61,26 @@
     display: flex;
     flex-wrap: wrap;
     position: absolute;
-    bottom: 152px;
+    top: 550px;
     left: 211px;
+}
+
+.div-letras {
+    width: 280px;
+    height: 100px;
+    position: absolute;
+    top: 431px;
+    right: 61px;
+    display: flex;
+}
+
+.cada-letra{
+    
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 68px;
+    margin-right: 10px;
+    
 }
