@@ -5,14 +5,14 @@ import forca4 from "../assets/img/forca4.png";
 import forca5 from "../assets/img/forca5.png";
 import forca6 from "../assets/img/forca6.png";
 
-export default function Letras ({imagemForca, setImagemForca, contadorErros, setContadorErros, setDesabilitado, desabilitado, arrayPalavraAleatoria}){
+export default function Letras ({letrasCorretasSelecionadas, setLetrasCorretasSelecionadas, setClasseLetras, classeLetras, imagemForca, setImagemForca, contadorErros, setContadorErros, setDesabilitados, desabilitados, arrayPalavraAleatoria}){
 
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
     "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
     console.log(arrayPalavraAleatoria)
     console.log(contadorErros)
-    console.log(desabilitado)
+    console.log(desabilitados)
 
     function atualizaContadorErros (){
       const contadorErrosAtualizado = contadorErros + 1;
@@ -39,18 +39,24 @@ export default function Letras ({imagemForca, setImagemForca, contadorErros, set
 
     return (
         <div className="container-letras">
-          {alfabeto.map((letra, indice) => <button data-test="letter" key={letra} className="letra" disabled={desabilitado[indice]} onClick={() => {
-            {arrayPalavraAleatoria.includes(letra) ? 
-            alert(`a palavra tem a letra ${letra}`) : 
-            alert(`a palavra não tem a letra ${letra}`)
-            setDesabilitado((anteriormenteDesabilitados) => {
-              const novosDesabilitados = [...anteriormenteDesabilitados];
-              novosDesabilitados[indice] = true;
-              return novosDesabilitados;
-            });
-            atualizaContadorErros () 
-          }
-          }}>{letra}</button>)}  
+          {alfabeto.map((letra, indice) => <button data-test="letter" key={letra} className={classeLetras[indice]} disabled={desabilitados[indice]} onClick={() => {
+            if (arrayPalavraAleatoria.includes(letra) === true){
+              setLetrasCorretasSelecionadas([...letrasCorretasSelecionadas, letra]) 
+            } 
+            else {
+              setDesabilitados((anteriormenteDesabilitados) => {
+                const novosDesabilitados = [...anteriormenteDesabilitados];
+                novosDesabilitados[indice] = true;
+                return novosDesabilitados;
+              });
+              setClasseLetras((classesAnteriores) => {
+                const novasClases = [...classesAnteriores];
+                novasClases[indice] = "letra letra-desabilitada"
+                return novasClases;
+              })
+              atualizaContadorErros ()
+            }
+          }}>{letra}</button>)} 
         </div>
     );
 }

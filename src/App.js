@@ -7,33 +7,42 @@ import forca0 from "./assets/img/forca0.png";
 
 export default function App() {
   const [arrayPalavraAleatoria, setArrayPalavraAleatoria ] = useState([]);
-  const [desabilitado, setDesabilitado] = useState(Array(26).fill(true));
-  console.log(desabilitado)
+  const [desabilitados, setDesabilitados] = useState(Array(26).fill(true));
+  console.log(desabilitados)
   const [contadorErros, setContadorErros] = useState (0);
   const [imagemForca, setImagemForca] = useState(forca0);
+  const [classeLetras, setClasseLetras] = useState(Array(26).fill("letra letra-desabilitada"));
+  const [letrasCorretasSelecionadas, setLetrasCorretasSelecionadas] = useState ([]);
   // const [letraEscolhida, setLetraEscolhida] = useState("");
   // const [mostraPalavra, setMostraPalavra] = useState (false);
   // const [escondePalavra, setEscondePalavra] = useState([]); 
   return (
     <>
     <Jogo
-    desabilitado={desabilitado}
-    setDesabilitado={setDesabilitado}
+    desabilitados={desabilitados}
+    setDesabilitados={setDesabilitados}
     arrayPalavraAleatoria={arrayPalavraAleatoria} 
     setArrayPalavraAleatoria={setArrayPalavraAleatoria}
     contadorErros={contadorErros}
     setContadorErros={setContadorErros}
     imagemForca={imagemForca}
     setImagemForca={setImagemForca}
+    setClasseLetras={setClasseLetras}
+    letrasCorretasSelecionadas={letrasCorretasSelecionadas}
+    setLetrasCorretasSelecionadas={setLetrasCorretasSelecionadas}
     />
     <Letras
     contadorErros={contadorErros}
     setContadorErros={setContadorErros}
-    desabilitado={desabilitado}
-    setDesabilitado={setDesabilitado}
+    desabilitados={desabilitados}
+    setDesabilitados={setDesabilitados}
     arrayPalavraAleatoria={arrayPalavraAleatoria}
     imagemForca={imagemForca}
     setImagemForca={setImagemForca}
+    classeLetras={classeLetras}
+    setClasseLetras={setClasseLetras}
+    letrasCorretasSelecionadas={letrasCorretasSelecionadas}
+    setLetrasCorretasSelecionadas={setLetrasCorretasSelecionadas}
     />
     </>
   );
