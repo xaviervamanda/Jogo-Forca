@@ -1,4 +1,4 @@
-import palavras from "./components/palavras";
+import palavras from "./palavras";
 import Jogo from "./components/Jogo";
 import Letras from "./components/Letras";
 import { useState } from "react";

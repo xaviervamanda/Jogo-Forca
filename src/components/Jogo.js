@@ -5,7 +5,7 @@ import forca3 from "../assets/img/forca3.png";
 import forca4 from "../assets/img/forca4.png";
 import forca5 from "../assets/img/forca5.png";
 import forca6 from "../assets/img/forca6.png";
-import palavras from "./palavras";
+import palavras from "../palavras";
 
 
 export default function Jogo ({imagemForca, setImagemForca, contadorErros, setContadorErros, setDesabilitado, desabilitado, arrayPalavraAleatoria, setArrayPalavraAleatoria}){
