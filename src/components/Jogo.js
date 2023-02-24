@@ -1,5 +1,4 @@
 import { useState } from "react";
-import forca0 from "../assets/img/forca0.png";
 import forca1 from "../assets/img/forca1.png";
 import forca2 from "../assets/img/forca2.png";
 import forca3 from "../assets/img/forca3.png";
@@ -9,22 +8,20 @@ import forca6 from "../assets/img/forca6.png";
 import palavras from "./palavras";
 
 
-export default function Jogo ({setDesabilitado, arrayPalavraAleatoria, setArrayPalavraAleatoria}){
+export default function Jogo ({imagemForca, setImagemForca, contadorErros, setContadorErros, setDesabilitado, desabilitado, arrayPalavraAleatoria, setArrayPalavraAleatoria}){
    
-    console.log(arrayPalavraAleatoria);
-    
     function escolhePalavraAleatoria (){
         const indiceAleatorio = Math.floor(Math.random()*palavras.length);
         let novoArray = palavras[indiceAleatorio].split("")
         setArrayPalavraAleatoria(novoArray);
-        setDesabilitado(false);
+        setDesabilitado(Array(26).fill(false));
     }
 
 
     return (
         <>
             <div className="imagem-forca">
-                <img src={forca0} alt="forca" />
+                <img src={imagemForca} alt="forca" />
             </div>
             <button className="botao" onClick={escolhePalavraAleatoria}>
                 Escolher Palavra
