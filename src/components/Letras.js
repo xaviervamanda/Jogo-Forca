@@ -39,7 +39,7 @@ export default function Letras ({imagemForca, setImagemForca, contadorErros, set
 
     return (
         <div className="container-letras">
-          {alfabeto.map((letra, indice) => <button key={letra} className="letra" disabled={desabilitado[indice]} onClick={() => {
+          {alfabeto.map((letra, indice) => <button data-test="letter" key={letra} className="letra" disabled={desabilitado[indice]} onClick={() => {
             {arrayPalavraAleatoria.includes(letra) ? 
             alert(`a palavra tem a letra ${letra}`) : 
             alert(`a palavra não tem a letra ${letra}`)

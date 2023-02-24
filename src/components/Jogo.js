@@ -21,12 +21,12 @@ export default function Jogo ({imagemForca, setImagemForca, contadorErros, setCo
     return (
         <>
             <div className="imagem-forca">
-                <img src={imagemForca} alt="forca" />
+                <img data-test="game-image" src={imagemForca} alt="forca" />
             </div>
-            <button className="botao" onClick={escolhePalavraAleatoria}>
+            <button data-test="choose-word" className="botao" onClick={escolhePalavraAleatoria}>
                 Escolher Palavra
             </button>
-            <div className="div-letras">
+            <div data-test="word" className="div-letras">
                 {arrayPalavraAleatoria.map((letra, indice) => (
                     <div key={indice} className="cada-letra">_</div>
                 ))}
