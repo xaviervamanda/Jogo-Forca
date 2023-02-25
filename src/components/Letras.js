@@ -5,7 +5,9 @@ import forca4 from "../assets/img/forca4.png";
 import forca5 from "../assets/img/forca5.png";
 import forca6 from "../assets/img/forca6.png";
 
-export default function Letras ({classeLetraPalavra, setClasseLetraPalavra, letrasCorretasSelecionadas, setLetrasCorretasSelecionadas, setClasseLetras, classeLetras, imagemForca, setImagemForca, contadorErros, setContadorErros, setDesabilitados, desabilitados, arrayPalavraAleatoria}){
+export default function Letras ({setClasseLetraPalavra, letrasCorretasSelecionadas, 
+  setLetrasCorretasSelecionadas, setClasseLetras, classeLetras, setImagemForca, 
+  contadorErros, setContadorErros, setDesabilitados, desabilitados, arrayPalavraAleatoria}){
 
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
     "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -47,15 +49,15 @@ export default function Letras ({classeLetraPalavra, setClasseLetraPalavra, letr
       }
       if (!temTracos) {
         setClasseLetraPalavra("cada-letra ganhou");
-        setDesabilitados(Array(26).fill(true))
-        setClasseLetras(Array(26).fill("letra letra-desabilitada"))
+        setDesabilitados(Array(26).fill(true));
+        setClasseLetras(Array(26).fill("letra letra-desabilitada"));
       } else if ((contadorErros + 1) >= 6) {
         setLetrasCorretasSelecionadas(
           arrayLetras.concat(arrayPalavraAleatoria)
         );
         setClasseLetraPalavra("cada-letra perdeu");
-        setDesabilitados(Array(26).fill(true))
-        setClasseLetras(Array(26).fill("letra letra-desabilitada"))
+        setDesabilitados(Array(26).fill(true));
+        setClasseLetras(Array(26).fill("letra letra-desabilitada"));
       }
     }
     
@@ -71,8 +73,6 @@ export default function Letras ({classeLetraPalavra, setClasseLetraPalavra, letr
         return novasClases;
       });
     
-      // if (acertouLetra === true) {
-      //   setLetrasCorretasSelecionadas([...letrasCorretasSelecionadas, letra]);
       let letrasCorretas = [...letrasCorretasSelecionadas];
       if (acertouLetra === true) {
         letrasCorretas.push(letra);

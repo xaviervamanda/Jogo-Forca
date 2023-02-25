@@ -1,14 +1,9 @@
-import { useState } from "react";
-import forca1 from "../assets/img/forca1.png";
-import forca2 from "../assets/img/forca2.png";
-import forca3 from "../assets/img/forca3.png";
-import forca4 from "../assets/img/forca4.png";
-import forca5 from "../assets/img/forca5.png";
-import forca6 from "../assets/img/forca6.png";
 import palavras from "../palavras";
+import forca0 from "../assets/img/forca0.png";
 
-
-export default function Jogo ({classeLetraPalavra, setClasseLetraPalavra, letrasCorretasSelecionadas, setLetrasCorretasSelecionadas, setClasseLetras, imagemForca, setImagemForca, contadorErros, setContadorErros, setDesabilitados, desabilitados, arrayPalavraAleatoria, setArrayPalavraAleatoria}){
+export default function Jogo ({classeLetraPalavra, letrasCorretasSelecionadas, 
+    setClasseLetras, imagemForca,  setDesabilitados, arrayPalavraAleatoria, setArrayPalavraAleatoria,
+    setContadorErros, setImagemForca, setLetrasCorretasSelecionadas, setClasseLetraPalavra}){
 
 
     return (
@@ -22,6 +17,10 @@ export default function Jogo ({classeLetraPalavra, setClasseLetraPalavra, letras
                 setArrayPalavraAleatoria(novoArray);
                 setDesabilitados(Array(26).fill(false));
                 setClasseLetras(Array(26).fill("letra letra-habilitada"));
+                setContadorErros(0);
+                setImagemForca(forca0);
+                setLetrasCorretasSelecionadas([]);
+                setClasseLetraPalavra("cada-letra");
                 }}>
                 Escolher Palavra
             </button>
