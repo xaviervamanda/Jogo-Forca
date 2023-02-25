@@ -13,6 +13,7 @@ export default function App() {
   const [imagemForca, setImagemForca] = useState(forca0);
   const [classeLetras, setClasseLetras] = useState(Array(26).fill("letra letra-desabilitada"));
   const [letrasCorretasSelecionadas, setLetrasCorretasSelecionadas] = useState ([]);
+  const [classeLetraPalavra, setClasseLetraPalavra] = useState("cada-letra");
   // const [letraEscolhida, setLetraEscolhida] = useState("");
   // const [mostraPalavra, setMostraPalavra] = useState (false);
   // const [escondePalavra, setEscondePalavra] = useState([]); 
@@ -30,6 +31,8 @@ export default function App() {
     setClasseLetras={setClasseLetras}
     letrasCorretasSelecionadas={letrasCorretasSelecionadas}
     setLetrasCorretasSelecionadas={setLetrasCorretasSelecionadas}
+    classeLetraPalavra={classeLetraPalavra}
+    setClasseLetraPalavra={setClasseLetraPalavra}
     />
     <Letras
     contadorErros={contadorErros}
@@ -43,6 +46,8 @@ export default function App() {
     setClasseLetras={setClasseLetras}
     letrasCorretasSelecionadas={letrasCorretasSelecionadas}
     setLetrasCorretasSelecionadas={setLetrasCorretasSelecionadas}
+    classeLetraPalavra={classeLetraPalavra}
+    setClasseLetraPalavra={setClasseLetraPalavra}
     />
     </>
   );

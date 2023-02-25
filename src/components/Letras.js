@@ -5,14 +5,12 @@ import forca4 from "../assets/img/forca4.png";
 import forca5 from "../assets/img/forca5.png";
 import forca6 from "../assets/img/forca6.png";
 
-export default function Letras ({letrasCorretasSelecionadas, setLetrasCorretasSelecionadas, setClasseLetras, classeLetras, imagemForca, setImagemForca, contadorErros, setContadorErros, setDesabilitados, desabilitados, arrayPalavraAleatoria}){
+export default function Letras ({classeLetraPalavra, setClasseLetraPalavra, letrasCorretasSelecionadas, setLetrasCorretasSelecionadas, setClasseLetras, classeLetras, imagemForca, setImagemForca, contadorErros, setContadorErros, setDesabilitados, desabilitados, arrayPalavraAleatoria}){
 
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
     "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
     console.log(arrayPalavraAleatoria)
-    console.log(contadorErros)
-    console.log(desabilitados)
 
     function atualizaContadorErros (){
       const contadorErrosAtualizado = contadorErros + 1;
@@ -35,28 +33,72 @@ export default function Letras ({letrasCorretasSelecionadas, setLetrasCorretasSe
       } else if (contador === 6){
         setImagemForca(forca6)
       }
-    } 
-
+    }
+    
+    function checaLetras(arrayLetras) {
+      console.log(arrayLetras);
+      console.log(contadorErros);
+      let temTracos = false;
+      for (let letra of arrayPalavraAleatoria) {
+        if (!arrayLetras.includes(letra)) {
+          temTracos = true;
+          break;
+        }
+      }
+      if (!temTracos) {
+        setClasseLetraPalavra("cada-letra ganhou");
+        setDesabilitados(Array(26).fill(true))
+        setClasseLetras(Array(26).fill("letra letra-desabilitada"))
+      } else if ((contadorErros + 1) >= 6) {
+        setLetrasCorretasSelecionadas(
+          arrayLetras.concat(arrayPalavraAleatoria)
+        );
+        setClasseLetraPalavra("cada-letra perdeu");
+        setDesabilitados(Array(26).fill(true))
+        setClasseLetras(Array(26).fill("letra letra-desabilitada"))
+      }
+    }
+    
+    function botaoDeLetra(indice, letra, acertouLetra) {
+      setDesabilitados((anteriormenteDesabilitados) => {
+        const novosDesabilitados = [...anteriormenteDesabilitados];
+        novosDesabilitados[indice] = true;
+        return novosDesabilitados;
+      });
+      setClasseLetras((classesAnteriores) => {
+        const novasClases = [...classesAnteriores];
+        novasClases[indice] = "letra letra-desabilitada";
+        return novasClases;
+      });
+    
+      // if (acertouLetra === true) {
+      //   setLetrasCorretasSelecionadas([...letrasCorretasSelecionadas, letra]);
+      let letrasCorretas = [...letrasCorretasSelecionadas];
+      if (acertouLetra === true) {
+        letrasCorretas.push(letra);
+      } else {
+        atualizaContadorErros();
+      }
+      setLetrasCorretasSelecionadas(letrasCorretas);
+      checaLetras(letrasCorretas);
+    }
+    
+    function cliqueDoBotaoLetra (indice, letra) {
+      if (arrayPalavraAleatoria.includes(letra)) {
+        botaoDeLetra(indice, letra, true);
+      } else {
+        botaoDeLetra(indice, letra, false);
+      }
+    }
+    
     return (
         <div className="container-letras">
-          {alfabeto.map((letra, indice) => <button data-test="letter" key={letra} className={classeLetras[indice]} disabled={desabilitados[indice]} onClick={() => {
-            if (arrayPalavraAleatoria.includes(letra) === true){
-              setLetrasCorretasSelecionadas([...letrasCorretasSelecionadas, letra]) 
-            } 
-            else {
-              setDesabilitados((anteriormenteDesabilitados) => {
-                const novosDesabilitados = [...anteriormenteDesabilitados];
-                novosDesabilitados[indice] = true;
-                return novosDesabilitados;
-              });
-              setClasseLetras((classesAnteriores) => {
-                const novasClases = [...classesAnteriores];
-                novasClases[indice] = "letra letra-desabilitada"
-                return novasClases;
-              })
-              atualizaContadorErros ()
-            }
-          }}>{letra}</button>)} 
+          {alfabeto.map((letra, indice) => <button data-test="letter" key={letra} 
+          className={classeLetras[indice]} 
+          disabled={desabilitados[indice]} 
+          onClick={() => cliqueDoBotaoLetra(indice, letra)}>
+          {letra}
+          </button>)} 
         </div>
     );
 }

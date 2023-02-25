@@ -8,7 +8,7 @@ import forca6 from "../assets/img/forca6.png";
 import palavras from "../palavras";
 
 
-export default function Jogo ({letrasCorretasSelecionadas, setLetrasCorretasSelecionadas, setClasseLetras, imagemForca, setImagemForca, contadorErros, setContadorErros, setDesabilitados, desabilitados, arrayPalavraAleatoria, setArrayPalavraAleatoria}){
+export default function Jogo ({classeLetraPalavra, setClasseLetraPalavra, letrasCorretasSelecionadas, setLetrasCorretasSelecionadas, setClasseLetras, imagemForca, setImagemForca, contadorErros, setContadorErros, setDesabilitados, desabilitados, arrayPalavraAleatoria, setArrayPalavraAleatoria}){
 
 
     return (
@@ -27,7 +27,7 @@ export default function Jogo ({letrasCorretasSelecionadas, setLetrasCorretasSele
             </button>
             <div data-test="word" className="div-letras">
                 {arrayPalavraAleatoria.map((letra, indice) => (
-                    <div key={indice} className="cada-letra">
+                    <div key={indice} className={classeLetraPalavra}>
                         {letrasCorretasSelecionadas.includes(letra) ? letra : "_"}
                     </div>
                 ))}
