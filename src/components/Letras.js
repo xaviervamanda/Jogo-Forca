@@ -12,8 +12,6 @@ export default function Letras ({setClasseLetraPalavra, letrasCorretasSelecionad
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
     "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-    console.log(arrayPalavraAleatoria)
-
     function atualizaContadorErros (){
       const contadorErrosAtualizado = contadorErros + 1;
       setContadorErros(contadorErrosAtualizado);
@@ -38,8 +36,6 @@ export default function Letras ({setClasseLetraPalavra, letrasCorretasSelecionad
     }
     
     function checaLetras(arrayLetras) {
-      console.log(arrayLetras);
-      console.log(contadorErros);
       let temTracos = false;
       for (let letra of arrayPalavraAleatoria) {
         if (!arrayLetras.includes(letra)) {
